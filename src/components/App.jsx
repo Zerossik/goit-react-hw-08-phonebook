@@ -3,14 +3,15 @@ import { PhoneForm } from './PhonebookForm/PhonebookForm';
 import { ContactsList } from './ContactsList/ContactsList';
 import { Filter } from './Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { fetchContactsThunk } from '../redux/thunks';
 import { selectContactsItems } from 'redux/selects';
 import { Route, Routes } from 'react-router-dom';
 import { Shared } from './SharedLayout/Shared';
 import { Home } from 'page/Home/Home';
-import { Login } from 'page/Login/Login';
-import { Registration } from 'page/Registration/Registration';
+
+const Login = lazy(() => import('../page/Login/Login'));
+const Registration = lazy(() => import('page/Registration/Registration'));
 
 export function App() {
   const contacts = useSelector(selectContactsItems); // получаем значение стейта - contacts
@@ -28,6 +29,7 @@ export function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/SingUp" element={<Registration></Registration>} />
         </Route>
+        <Route path="*" element={<div>Нет такой страницы</div>} />
       </Routes>
       {/* <Section title={'Phonebook'}>
         <PhoneForm />
