@@ -1,4 +1,11 @@
-import { LoginWrap, LoginForm, LoginInput } from './Login.styled';
+import {
+  LoginWrap,
+  LoginForm,
+  LoginInput,
+  LoginButton,
+  LoginLink,
+} from './Login.styled';
+import { Link } from 'react-router-dom';
 export const Login = () => (
   <LoginWrap>
     <h2>Login</h2>
@@ -12,7 +19,8 @@ export const Login = () => (
         <LoginInput type="password" required placeholder="Password" />
       </label>
 
-      <button type="submit">LogIn</button>
+      <LoginButton type="submit">LogIn</LoginButton>
+      <LoginLink to="/singUp">Sing Up</LoginLink>
     </LoginForm>
   </LoginWrap>
 );

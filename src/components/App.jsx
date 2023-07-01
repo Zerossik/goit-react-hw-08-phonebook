@@ -8,9 +8,9 @@ import { fetchContactsThunk } from '../redux/thunks';
 import { selectContactsItems } from 'redux/selects';
 import { Route, Routes } from 'react-router-dom';
 import { Shared } from './SharedLayout/Shared';
-import { Navigation } from './Navigation/Navigation';
-import { Home } from 'page/home/Home';
+import { Home } from 'page/Home/Home';
 import { Login } from 'page/Login/Login';
+import { Registration } from 'page/Registration/Registration';
 
 export function App() {
   const contacts = useSelector(selectContactsItems); // получаем значение стейта - contacts
@@ -26,6 +26,7 @@ export function App() {
         <Route path="/" element={<Shared />}>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/SingUp" element={<Registration></Registration>} />
         </Route>
       </Routes>
       {/* <Section title={'Phonebook'}>

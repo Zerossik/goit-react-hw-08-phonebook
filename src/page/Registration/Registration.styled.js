@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const LoginWrap = styled.div`
+export const RegWrap = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -9,12 +8,11 @@ export const LoginWrap = styled.div`
   align-items: center;
 `;
 
-export const LoginForm = styled.form`
+export const RegForm = styled.form`
   margin-top: 24px;
   padding: 20px;
 `;
-
-export const LoginInput = styled.input`
+export const RegInput = styled.input`
   width: 250px;
   height: 34px;
   padding: 4px;
@@ -29,12 +27,12 @@ export const LoginInput = styled.input`
     border-bottom: 1px solid #1976d2;
   }
 `;
-export const LoginButton = styled.button`
+
+export const RegButton = styled.button`
   font-size: 18px;
   font-weight: 500;
 
   padding: 4px 8px;
-  margin-right: 20px;
 
   border-radius: 4px;
   border: none;
@@ -50,21 +48,5 @@ export const LoginButton = styled.button`
     background-color: #005cb7;
     transform: scale(1.1);
     transition: transform 250ms linear;
-  }
-`;
-export const LoginLink = styled(Link)`
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-
-  color: #1976d2;
-
-  font-size: 18px;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-    transition: transform 250ms linear;
-    color: #005cb7;
   }
 `;
