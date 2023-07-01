@@ -9,6 +9,7 @@ import { selectContactsItems } from 'redux/selects';
 import { Route, Routes } from 'react-router-dom';
 import { Shared } from './SharedLayout/Shared';
 import { Navigation } from './Navigation/Navigation';
+import { Home } from 'pages/Home/Home';
 
 export function App() {
   const contacts = useSelector(selectContactsItems); // получаем значение стейта - contacts
@@ -22,7 +23,7 @@ export function App() {
     <>
       <Routes>
         <Route path="/" element={<Shared />}>
-          <Route index element={<h1>PhoneBook</h1>} />
+          <Route index element={<Home />} />
           <Route path="/login" element={<div>Login</div>} />
         </Route>
       </Routes>
