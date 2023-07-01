@@ -34,4 +34,5 @@ export const StyledLink = styled(NavLink)`
 export const StyledList = styled.ul`
   display: flex;
   gap: 15px;
+  padding: 8px;
 `;
