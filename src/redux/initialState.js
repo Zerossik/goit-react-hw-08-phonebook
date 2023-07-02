@@ -2,9 +2,11 @@
 export const initialState = {
   contacts: {
     items: [],
-    isLoading: false,
+
     error: null,
   },
-  user: { name: '', email: '', token: null, isLogin: false },
+  auth: { name: '', email: '', isLogin: false },
   filter: '',
+  token: null,
+  isLoading: false,
 };

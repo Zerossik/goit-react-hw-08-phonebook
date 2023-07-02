@@ -5,7 +5,7 @@ import { Filter } from './Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { lazy, useEffect } from 'react';
 import { fetchContactsThunk } from '../redux/thunks';
-import { selectContactsItems } from 'redux/selects';
+import { selectContactsItems, selectIsLogin } from 'redux/selects';
 import { Route, Routes } from 'react-router-dom';
 import { Shared } from './SharedLayout/Shared';
 import { Home } from 'page/Home/Home';
@@ -15,6 +15,7 @@ const Registration = lazy(() => import('page/Registration/Registration'));
 
 export function App() {
   const contacts = useSelector(selectContactsItems); // получаем значение стейта - contacts
+  const isLogin = useSelector(selectIsLogin);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -31,6 +32,8 @@ export function App() {
         </Route>
         <Route path="*" element={<div>Нет такой страницы</div>} />
       </Routes>
+
+      {}
       {/* <Section title={'Phonebook'}>
         <PhoneForm />
         <Filter />

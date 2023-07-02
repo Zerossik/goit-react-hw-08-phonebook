@@ -5,19 +5,20 @@ import {
   fetchContactsThunk,
   addContactThunk,
   deleteContactThunk,
+  getUserThunk,
 } from './thunks';
 
 const handlePending = state => {
-  state.contacts.isLoading = true;
+  state.isLoading = true;
 };
 const handleFulfilled = (state, { payload }) => {
-  state.contacts.isLoading = false;
+  state.isLoading = false;
   state.contacts.error = null;
   state.contacts.items = payload;
 };
 const handleRejected = (state, { payload }) => {
   state.contacts.error = payload;
-  state.contacts.isLoading = false;
+  state.isLoading = false;
 };
 const handleFulfilledAddContact = (state, { payload }) => {
   return {
@@ -25,8 +26,8 @@ const handleFulfilledAddContact = (state, { payload }) => {
     contacts: {
       ...state.contacts,
       items: [...state.contacts.items, payload],
-      isLoading: false,
     },
+    isLoading: false,
   };
 };
 const handleDeletContact = (state, { payload }) => {
@@ -36,8 +37,8 @@ const handleDeletContact = (state, { payload }) => {
       ...state.contacts,
 
       items: state.contacts.items.filter(({ id }) => id !== payload),
-      isLoading: false,
     },
+    isLoading: false,
   };
 };
 const phoneBook = createSlice({
@@ -51,15 +52,23 @@ const phoneBook = createSlice({
   },
   extraReducers: builder =>
     builder
-      .addCase(loginThunk.fulfilled, (state, { payload }) => {
-        state.user.token = payload.token;
-        state.user.isLogin = true;
-      })
 
       .addCase(fetchContactsThunk.fulfilled, handleFulfilled)
       .addCase(addContactThunk.fulfilled, handleFulfilledAddContact)
       .addCase(deleteContactThunk.fulfilled, handleDeletContact)
-
+      .addCase(loginThunk.fulfilled, (state, { payload }) => {
+        state.token = payload.token;
+        state.isLoading = false;
+      })
+      .addCase(
+        getUserThunk.fulfilled,
+        (state, { payload: { name, email } }) => {
+          state.isLoading = false;
+          state.auth.name = name;
+          state.auth.email = email;
+          state.auth.isLogin = true;
+        }
+      )
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected),
 });

@@ -1,6 +1,9 @@
+import { useSelector } from 'react-redux';
 import { StyledLink, StyledList } from './Navigation.styled';
+import { selectIsLogin } from 'redux/selects';
 
 export const Navigation = () => {
+  const isLogin = useSelector(selectIsLogin);
   return (
     <nav>
       <StyledList>
@@ -10,7 +13,7 @@ export const Navigation = () => {
           </StyledLink>
         </li>
         <li>
-          <StyledLink to="/login">Login</StyledLink>
+          <StyledLink to="/login">{isLogin ? 'Logout' : 'Login'}</StyledLink>
         </li>
       </StyledList>
     </nav>

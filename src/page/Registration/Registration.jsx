@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { RegWrap, RegForm, RegInput, RegButton } from './Registration.styled';
 import { createAccount } from 'services/api';
+import { useNavigate } from 'react-router-dom';
 
 const Registration = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = evt => {
     evt.preventDefault();
