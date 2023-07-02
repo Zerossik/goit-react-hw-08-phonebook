@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { RegWrap, RegForm, RegInput, RegButton } from './Registration.styled';
+import { createAccount } from 'services/api';
 
 const Registration = () => {
   const [name, setName] = useState('');
@@ -8,8 +9,9 @@ const Registration = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log({ name, email, password });
-    // ТУТ Диспатчим объект с юзером в thunk для РЕГИСТРАЦИИ
+
+    createAccount({ name, email, password });
+
     resetForm();
   };
   const handleChange = ({ target: { name, value } }) => {

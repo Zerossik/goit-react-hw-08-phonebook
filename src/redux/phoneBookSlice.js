@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
 import {
+  loginThunk,
   fetchContactsThunk,
   addContactThunk,
   deleteContactThunk,
@@ -50,6 +51,10 @@ const phoneBook = createSlice({
   },
   extraReducers: builder =>
     builder
+      .addCase(loginThunk.fulfilled, (state, { payload }) => {
+        state.user.token = payload.token;
+        state.user.isLogin = true;
+      })
 
       .addCase(fetchContactsThunk.fulfilled, handleFulfilled)
       .addCase(addContactThunk.fulfilled, handleFulfilledAddContact)

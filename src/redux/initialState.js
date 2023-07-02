@@ -5,5 +5,6 @@ export const initialState = {
     isLoading: false,
     error: null,
   },
+  user: { name: '', email: '', token: null, isLogin: false },
   filter: '',
 };

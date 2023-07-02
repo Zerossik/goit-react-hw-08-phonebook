@@ -6,15 +6,19 @@ import {
   LoginButton,
   LoginLink,
 } from './Login.styled';
+import { useDispatch } from 'react-redux';
+import { loginThunk } from 'redux/thunks';
 
 const Login = () => {
+  // {name: 'zazaza', email: 'tl_wlad@mail.com', password: '1122334455'}
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log({ email, password });
-    // ТУТ диспатчик юзера на авторизацию
+
+    dispatch(loginThunk({ email, password }));
     resetForm();
   };
   const handleChange = ({ target: { name, value } }) => {

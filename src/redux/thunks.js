@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getContacts, addContact, removeContact } from '../services/conactsApi';
+import { login } from 'services/api';
 
 export const fetchContactsThunk = createAsyncThunk(
   'contacts/fetchAll',
@@ -38,3 +39,13 @@ export const deleteContactThunk = createAsyncThunk(
     }
   }
 );
+
+export const loginThunk = createAsyncThunk('PhoneBook/login', async user => {
+  try {
+    const data = await login(user);
+
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+});
