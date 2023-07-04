@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types';
-import { ContactItem, ContactListButton } from './ContactsList.styled';
+import {
+  ContactItem,
+  ContactListButton,
+  StyledWrapButton,
+} from './ContactsList.styled';
 import { useDispatch } from 'react-redux';
 import { deleteContactThunk } from 'redux/thunks';
 import { Modal } from 'components/Modal/Modal';
@@ -14,19 +18,21 @@ export function ContactListItem({ id, name, number, isOpen, handleIsOpen }) {
         <p>
           {name}: {number}
         </p>
-        <ContactListButton type="button" onClick={handleIsOpen}>
-          Update user
-        </ContactListButton>
-        <ContactListButton
-          type="button"
-          onClick={() => dispatch(deleteContactThunk(id))}
-        >
-          Delete
-        </ContactListButton>
+        <StyledWrapButton>
+          <ContactListButton type="button" onClick={handleIsOpen}>
+            Update user
+          </ContactListButton>
+          <ContactListButton
+            type="button"
+            onClick={() => dispatch(deleteContactThunk(id))}
+          >
+            Delete
+          </ContactListButton>
+        </StyledWrapButton>
       </ContactItem>
       {isOpen && (
         <Modal handleIsOpen={handleIsOpen}>
-          <UserUpdate id={id} />
+          <UserUpdate id={id} handleIsOpen={handleIsOpen} />
         </Modal>
       )}
     </>

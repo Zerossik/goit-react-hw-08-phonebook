@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { fetchContactsThunk } from 'redux/thunks';
 import { updateUser } from 'services/conactsApi';
 
-export const UserUpdate = ({ id }) => {
+export const UserUpdate = ({ id, handleIsOpen }) => {
   const [name, setname] = useState('');
   const [number, setnumber] = useState('');
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ export const UserUpdate = ({ id }) => {
     );
 
     resetForm();
+    handleIsOpen();
   };
   const handlerChange = ({ target: { name, value } }) => {
     switch (name) {

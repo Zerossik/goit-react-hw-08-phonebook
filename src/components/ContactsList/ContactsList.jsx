@@ -6,6 +6,7 @@ import {
   selectContacts,
   selectContactsItems,
   selectFilterContacts,
+  selectIsLoading,
 } from 'redux/selects';
 import { Dna } from 'react-loader-spinner';
 import { useEffect, useState } from 'react';
@@ -16,7 +17,8 @@ export function ContactsList({ title }) {
   const [isOpen, setIsOpen] = useState(false);
   const filter = useSelector(selectFilterContacts);
   const contacts = useSelector(selectContactsItems);
-  const { isLoading, error } = useSelector(selectContacts);
+  const { error } = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
 
   const dispatch = useDispatch();
   useEffect(() => {

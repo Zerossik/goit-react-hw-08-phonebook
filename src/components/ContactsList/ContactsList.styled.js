@@ -27,3 +27,9 @@ export const ContactItem = styled.li`
     background-color: #b8e4ff;
   }
 `;
+
+export const StyledWrapButton = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+`;

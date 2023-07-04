@@ -13,8 +13,9 @@ export const Backdrop = styled.div`
 `;
 export const StyledModal = styled.div`
   position: relative;
+  padding: 20px;
   width: calc(100% - 50px);
-  height: 400px;
+
   border-radius: 10px;
 
   background-color: #ffffff;
