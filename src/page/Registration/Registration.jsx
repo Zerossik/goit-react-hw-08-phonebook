@@ -12,7 +12,9 @@ const Registration = () => {
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    createAccount({ name, email, password });
+    createAccount({ name, email, password }).then(() =>
+      navigate('/login', { replace: true })
+    );
 
     resetForm();
   };
@@ -41,7 +43,7 @@ const Registration = () => {
       <h2>Registration new account</h2>
       <RegForm onSubmit={handleSubmit}>
         <label>
-          Name
+          Name <br />
           <RegInput
             type="text"
             name="name"
@@ -55,6 +57,7 @@ const Registration = () => {
 
         <label>
           Email
+          <br />
           <RegInput
             type="email"
             name="email"
@@ -67,6 +70,7 @@ const Registration = () => {
 
         <label>
           Password
+          <br />
           <RegInput
             type="password"
             name="password"

@@ -14,7 +14,7 @@ import {
 const persistConfig = {
   key: 'phonebook',
   storage,
-  whitelist: ['auth'],
+  whitelist: ['access_token'],
 };
 const persistedReducer = persistReducer(persistConfig, phoneBookReducer);
 export const store = configureStore({

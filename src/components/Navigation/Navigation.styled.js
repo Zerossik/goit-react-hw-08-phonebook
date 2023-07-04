@@ -36,3 +36,8 @@ export const StyledList = styled.ul`
   gap: 15px;
   padding: 8px;
 `;
+export const StyledNavigation = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`;

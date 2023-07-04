@@ -11,6 +11,9 @@ export const RegWrap = styled.div`
 export const RegForm = styled.form`
   margin-top: 24px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
 export const RegInput = styled.input`
   width: 250px;

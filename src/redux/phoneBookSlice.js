@@ -5,6 +5,8 @@ import {
   fetchContactsThunk,
   addContactThunk,
   deleteContactThunk,
+  // getUserThunk,
+  logoutThunk,
   getUserThunk,
 } from './thunks';
 
@@ -57,7 +59,7 @@ const phoneBook = createSlice({
       .addCase(addContactThunk.fulfilled, handleFulfilledAddContact)
       .addCase(deleteContactThunk.fulfilled, handleDeletContact)
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
-        state.token = payload.token;
+        state.access_token = payload.token;
         state.isLoading = false;
       })
       .addCase(
@@ -69,6 +71,11 @@ const phoneBook = createSlice({
           state.auth.isLogin = true;
         }
       )
+      .addCase(logoutThunk.fulfilled, state => {
+        state.auth = initialState.auth;
+        state.access_token = '';
+        state.isLoading = false;
+      })
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected),
 });

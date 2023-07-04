@@ -4,8 +4,8 @@ export const SectionEl = styled.section`
   display: flex;
   flex-direction: column;
   margin: 40px auto;
-  width: 350px;
-  min-height: 500px;
+  width: 500px;
+  min-height: 600px;
   text-align: center;
 
   padding: 20px;

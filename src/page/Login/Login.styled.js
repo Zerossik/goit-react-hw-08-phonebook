@@ -12,13 +12,16 @@ export const LoginWrap = styled.div`
 export const LoginForm = styled.form`
   margin-top: 24px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
 
 export const LoginInput = styled.input`
   width: 250px;
   height: 34px;
   padding: 4px;
-  margin-bottom: 20px;
+
   outline: none;
   font-size: 18px;
 

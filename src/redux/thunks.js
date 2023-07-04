@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getContacts, addContact, removeContact } from '../services/conactsApi';
-import { login, getUser } from 'services/api';
-import { useNavigate } from 'react-router-dom';
+import { getUser, login, userLogout } from 'services/api';
 
 export const fetchContactsThunk = createAsyncThunk(
   'contacts/fetchAll',
@@ -55,10 +54,23 @@ export const getUserThunk = createAsyncThunk(
 export const loginThunk = createAsyncThunk(
   'PhoneBook/login',
 
-  async (user, { rejectWithValue, dispatch }) => {
+  async (user, { rejectWithValue }) => {
     try {
       const data = await login(user);
-      dispatch(getUserThunk());
+      // dispatch(getUserThunk());
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutThunk = createAsyncThunk(
+  'PhoneBook/Logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await userLogout();
 
       return data;
     } catch (error) {

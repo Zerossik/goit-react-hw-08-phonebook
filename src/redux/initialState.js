@@ -7,6 +7,6 @@ export const initialState = {
   },
   auth: { name: '', email: '', isLogin: false },
   filter: '',
-  token: null,
+  access_token: null,
   isLoading: false,
 };
