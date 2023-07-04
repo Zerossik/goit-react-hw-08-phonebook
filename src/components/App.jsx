@@ -54,11 +54,6 @@ export function App() {
         </Route>
         <Route path="*" element={<div>Нет такой страницы</div>} />
       </Routes>
-
-      {}
-      {/* <Section title={'Phonebook'}>
-       
-      </Section> */}
     </>
   );
 }
