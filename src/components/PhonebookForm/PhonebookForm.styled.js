@@ -12,7 +12,7 @@ export const FormButton = styled.button`
 
 export const Input = styled.input`
   width: 250px;
-  height: 20px;
+  height: 34px;
   outline: none;
   border-radius: 5px;
 

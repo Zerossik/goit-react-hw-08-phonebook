@@ -1,18 +1,27 @@
 import PropTypes from 'prop-types';
 import { ContactListItem } from './ContactListItem';
 import { List } from './ContactsList.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
   selectContactsItems,
   selectFilterContacts,
 } from 'redux/selects';
 import { Dna } from 'react-loader-spinner';
+import { useEffect, useState } from 'react';
+
+import { fetchContactsThunk } from 'redux/thunks';
 
 export function ContactsList({ title }) {
-  const filter = useSelector(selectFilterContacts); // получаем значение стейта - filter
-  const contacts = useSelector(selectContactsItems); // получаем значение стейта - contacts
+  const [isOpen, setIsOpen] = useState(false);
+  const filter = useSelector(selectFilterContacts);
+  const contacts = useSelector(selectContactsItems);
   const { isLoading, error } = useSelector(selectContacts);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchContactsThunk());
+  }, [dispatch]);
 
   const findByName = () => {
     return contacts.filter(contact =>
@@ -20,18 +29,31 @@ export function ContactsList({ title }) {
     );
   };
 
+  const handleIsOpen = () => {
+    setIsOpen(isOpen => (isOpen = !isOpen));
+  };
+
   return (
-    <List>
-      <h2>{title}</h2>
-      {isLoading && <Dna wrapperStyle={{ margin: 'auto' }} />}
-      {error ? (
-        <h2>{error}</h2>
-      ) : (
-        findByName().map(({ id, name, number }) => (
-          <ContactListItem name={name} number={number} key={id} id={id} />
-        ))
-      )}
-    </List>
+    <>
+      <List>
+        <h2>{title}</h2>
+        {isLoading && <Dna wrapperStyle={{ margin: 'auto' }} />}
+        {error ? (
+          <h2>{error}</h2>
+        ) : (
+          findByName().map(({ id, name, number }) => (
+            <ContactListItem
+              name={name}
+              number={number}
+              key={id}
+              id={id}
+              isOpen={isOpen}
+              handleIsOpen={handleIsOpen}
+            />
+          ))
+        )}
+      </List>
+    </>
   );
 }
 ContactsList.propTypes = {

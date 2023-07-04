@@ -23,7 +23,6 @@ export const createAccount = async user => {
 export const login = async user => {
   try {
     const { data } = await axios.post('/users/login', user);
-    console.log(data.token);
     if (data.token) token.setToken(data.token);
     return data;
   } catch (error) {

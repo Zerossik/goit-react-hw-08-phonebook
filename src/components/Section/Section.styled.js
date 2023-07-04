@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const SectionEl = styled.section`
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   margin: 40px auto;

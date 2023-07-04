@@ -1,23 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuth } from 'redux/selects';
 import { logoutThunk } from 'redux/thunks';
-import axios from 'axios';
+import { StyledBtn, StyledText } from './UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const { name } = useSelector(selectAuth);
   return (
     <div>
-      <i> Welcom {name}</i>
-      <button
+      <StyledText> Welcom {name}</StyledText>
+      <StyledBtn
         type="button"
         onClick={() => {
-          console.log(axios.defaults.headers.common);
           dispatch(logoutThunk());
         }}
       >
         Logout
-      </button>
+      </StyledBtn>
     </div>
   );
 };
