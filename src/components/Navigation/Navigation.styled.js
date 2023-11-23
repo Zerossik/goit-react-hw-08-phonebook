@@ -39,5 +39,5 @@ export const StyledList = styled.ul`
 export const StyledNavigation = styled.nav`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 `;
