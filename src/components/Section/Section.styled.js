@@ -6,7 +6,7 @@ export const SectionEl = styled.section`
   display: flex;
   flex-direction: column;
   margin: 40px auto;
-  width: 500px;
+  width: 375px;
   min-height: 600px;
   text-align: center;
 
